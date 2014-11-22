@@ -80,7 +80,7 @@ public class NumberConverterTest {
 	 * should be "". This is because tens place string will be "thirteen"
 	 */
 	@Test
-	public void testOnesString() {
+	public void testsetOnesString() {
 		NumberConverter zero = new NumberConverter(120);
 		NumberConverter one = new NumberConverter(31);
 		NumberConverter two = new NumberConverter(222);
@@ -91,6 +91,7 @@ public class NumberConverterTest {
 		NumberConverter seven = new NumberConverter(737);
 		NumberConverter eight = new NumberConverter(108);
 		NumberConverter nine = new NumberConverter(9);
+		NumberConverter teen = new NumberConverter(712);
 		assertEquals("Should have returned a ones string", one.setOnesString(),
 				"one");
 		assertEquals("Should have returned a ones string", two.setOnesString(),
@@ -111,13 +112,15 @@ public class NumberConverterTest {
 				nine.setOnesString(), "nine");
 		assertEquals("Should have returned a ones string",
 				zero.setOnesString(), "");
+		assertEquals("Should have returned a ones string",
+				teen.setOnesString(), "");
 	}
 
 	/**
-	 * Tests for numbers that do not have a one in the tens place. 
+	 * Tests for numbers that do not have a one in the tens place.
 	 */
 	@Test
-	public void testTensStringNotOne() {
+	public void testsetTensStringNotOne() {
 		NumberConverter zero = new NumberConverter(503);
 		NumberConverter two = new NumberConverter(521);
 		NumberConverter three = new NumberConverter(231);
@@ -148,8 +151,10 @@ public class NumberConverterTest {
 	}
 
 	/**
-	 * Tests numbers that have one in tens place value
+	 * Tests numbers that have one in tens place value. E.G. Explicitly tests
+	 * 'ten' through 'nineteen'
 	 */
+	@Test
 	public void testSetTensStringOne() {
 		NumberConverter zero = new NumberConverter(810);
 		NumberConverter one = new NumberConverter(211);
@@ -180,9 +185,13 @@ public class NumberConverterTest {
 		assertEquals("Should have returned a tens string for 18",
 				eight.setTensString(), "eighteen");
 		assertEquals("Should have returned a tens string for 19",
-				nine.setTensString(), "ninteen");
+				nine.setTensString(), "nineteen");
 	}
 
+	/**
+	 * Tests hundreds string.
+	 */
+	@Test
 	public void testSetHundredsString() {
 		NumberConverter zero = new NumberConverter(12);
 		NumberConverter one = new NumberConverter(182);
@@ -217,15 +226,24 @@ public class NumberConverterTest {
 				nine.setHundredsString(), "nine hundred");
 	}
 
-	public void testToStringForNumbersThatHaveZeroes() {
-		NumberConverter testH = new NumberConverter(91);
+	/**
+	 * Tests the string for all three digits combined. Tests all possible
+	 * combinations of place values with zero.
+	 */
+	@Test
+	public void testToString() {
+		NumberConverter test = new NumberConverter(436);
+		NumberConverter testH = new NumberConverter(95);
 		NumberConverter testT = new NumberConverter(203);
 		NumberConverter testO = new NumberConverter(870);
 		NumberConverter testHT = new NumberConverter(2);
 		NumberConverter testHO = new NumberConverter(40);
+		NumberConverter testTO = new NumberConverter(900);
 		NumberConverter testHTO = new NumberConverter(0);
 		assertEquals("Should have had stringed together correctly",
-				testH.toString(), "ninety one");
+				test.toString(), "four hundred and thirty six");
+		assertEquals("Should have had stringed together correctly",
+				testH.toString(), "ninety five");
 		assertEquals("Should have had stringed together correctly",
 				testT.toString(), "two hundred and three");
 		assertEquals("Should have had stringed together correctly",
@@ -233,7 +251,9 @@ public class NumberConverterTest {
 		assertEquals("Should have had stringed together correctly",
 				testHT.toString(), "two");
 		assertEquals("Should have had stringed together correctly",
-				testHO.toString(), "fourty");
+				testHO.toString(), "forty");
+		assertEquals("Should have had stringed together correctly",
+				testTO.toString(), "nine hundred");
 		assertEquals("Should have had stringed together correctly",
 				testHTO.toString(), "");
 

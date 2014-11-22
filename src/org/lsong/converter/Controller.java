@@ -12,7 +12,7 @@ public class Controller {
 		
 		System.out.println("Please enter a number with the maximum of 12 digits:");
 		
-		NumberConverter test = new NumberConverter(112);
+		NumberConverter test = new NumberConverter(321);
 		System.out.println(test.toString());
 
 	}

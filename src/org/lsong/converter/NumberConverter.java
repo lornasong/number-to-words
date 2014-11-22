@@ -139,15 +139,29 @@ public class NumberConverter {
 				}
 			}
 			else{
+				if(setOnesString().equals("")){
+					return setTensString();
+				}
 				return setTensString() + " " + setOnesString();
 			}
 		}
 		else{
 			if(setTensString().equals("")){
+				if(setOnesString().equals("")){
+					return setHundredsString();
+				}
 				return setHundredsString() + " and " + setOnesString();
 			}
-			return setHundredsString() + " and " + setTensString() + " " + setOnesString();
-		}
+			else{
+			}
+				if(setOnesString().equals("")){
+					return setHundredsString() + " and " + setTensString();
+				}
+				else{
+					return setHundredsString() + " and " + setTensString() + " " + setOnesString();	
+				}
+			}
+		
 	}
 	
 }
