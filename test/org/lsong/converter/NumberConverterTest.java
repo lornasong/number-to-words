@@ -11,7 +11,7 @@ import org.junit.Test;
  * @author lornasong
  */
 public class NumberConverterTest {
-
+	
 	/**
 	 * Next Three Test: retrieves number at place values ones, tens, hundreds
 	 * Each method tests (at least) a regular number, a number that has 0 in the

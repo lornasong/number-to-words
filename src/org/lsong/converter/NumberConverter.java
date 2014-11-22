@@ -10,7 +10,7 @@ package org.lsong.converter;
 public class NumberConverter {
 
 	private static int counter = 1;
-	private int groupNumber;
+	private final int groupNumber;
 	private final int groupCount;
 
 	// TODO Need to specify that int can be maximum of three digits long
