@@ -2,7 +2,7 @@ package org.lsong.converter;
 
 /**
  * Takes a three digit (maximum) number to convert to a string. E.G. 203 returns
- * two hundred three, 641 returns six hundred twenty three Contains the
+ * two hundred and three, 641 returns six hundred and twenty three Contains the
  * information on the string for each number
  * 
  * @author lornasong
@@ -31,10 +31,10 @@ public class NumberConverter {
 		return (int) ((groupNumber / Math.pow(10, n - 1)) % 10);
 	}
 
-	public String setOnesString() {
-		int onesDigit = getNthDigit(1);
+	public String getOneNumberToString(int placeValue) {
+		int digit = getNthDigit(placeValue);
 
-		switch (onesDigit) {
+		switch (digit) {
 
 		case 1:
 			return "one";
@@ -57,6 +57,15 @@ public class NumberConverter {
 		}
 
 		return "";
+	}
+	
+	public String setOnesString(){
+		if (getNthDigit(2) == 1){
+			return "";
+		}
+		else{
+			return getOneNumberToString(1);
+		}
 	}
 
 	public String setTensString() {
@@ -106,4 +115,39 @@ public class NumberConverter {
 
 		return "";
 	}
+	
+	public String setHundredsString(){
+		
+		if (getOneNumberToString(3).equals("")){
+			return "";
+		}
+		else{
+		return (getOneNumberToString(3) + " hundred");
+		}
+	}
+	
+	@Override
+	public String toString(){
+		
+		if (setHundredsString().equals("")){
+			if(setTensString().equals("")){
+				if(setOnesString().equals("")){
+					return "";
+				}
+				else{
+					return setOnesString();
+				}
+			}
+			else{
+				return setTensString() + " " + setOnesString();
+			}
+		}
+		else{
+			if(setTensString().equals("")){
+				return setHundredsString() + " and " + setOnesString();
+			}
+			return setHundredsString() + " and " + setTensString() + " " + setOnesString();
+		}
+	}
+	
 }

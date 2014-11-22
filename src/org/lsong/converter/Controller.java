@@ -1,13 +1,19 @@
 package org.lsong.converter;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class Controller {
 
 	public static void main(String[] args) {
-		NumberConverter test = new NumberConverter(310);
-		System.out.println(test.getNthDigit(1));
-		System.out.println(test.setOnesString());
-		System.out.println(test.getNthDigit(1));
-		System.out.println(test.setTensString());
+		
+		BufferedReader reader = new BufferedReader(new InputStreamReader(
+				System.in));
+		
+		System.out.println("Please enter a number with the maximum of 12 digits:");
+		
+		NumberConverter test = new NumberConverter(112);
+		System.out.println(test.toString());
 
 	}
 
