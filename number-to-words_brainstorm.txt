@@ -1,0 +1,67 @@
+public String returnOnesString(int num);
+
+	1 return one
+	2 return two
+
+public String returnTensString(int num);
+
+	2 return twenty
+	if int num = 1, then check second number and return ten, eleven, twelve, etc. (can this be an enum)
+
+public String returnHundredsString(int num);
+
+	1 return one hundred 
+	2 return two hundred etc.
+	logic: returnOnesString + "hundred"
+
+/** The whole number that the user entered
+public String returnLargestNumberWord(long num);
+
+	100222 return thousand
+	40 return null
+	
+	return thousand, million, billion
+
+
+Breaks long apart
+19000534
+19, 000, 534 
+
+
+/** converts a set of a three digit (maximum) number into a string
+Class NumberConverter
+need a counter
+constructor with the three digit number
+methods: setOnesString, setTensString, setHundredsString, override toString()
+getCounter
+getOnesInt
+getTensInt
+getHundredsInt
+
+/** breaks apart a long into multiples of three (at least) to convert to string
+Class BuildStringNumber
+constructor long that user inputs. initializes hashmap for that number
+array of [billion, million, thousand]
+
+
+private int breakOffAGroupOfNumbers(long userNumber, int counter) (start from ones)
+return three digit number or less. starting from right.
+
+getStringForGroup (by creating instance of numberconverter. then getting toString())
+
+addGroupAndStringToMap(hashmap, string, int)
+
+private int getLargestNumberWord(HashMap)
+[], [], [], []
+switch statement
+if HashMap has one index, then ""
+if hashMap has two or three, then "thousand"
+
+compileStringGroupsIntoNumber
+for loop through hashmap:
+	if not first time and this group isn't 000, add "and"
+	concat groupString starting with last index
+	add word from wordIndex
+	
+
+toString()
