@@ -239,7 +239,7 @@ public class NumberConverterTest {
 		NumberConverter testHT = new NumberConverter(2);
 		NumberConverter testHO = new NumberConverter(40);
 		NumberConverter testTO = new NumberConverter(900);
-		NumberConverter testHTO = new NumberConverter(0);
+		NumberConverter testHTO = new NumberConverter(013);
 		assertEquals("Should have had stringed together correctly",
 				test.toString(), "four hundred and thirty six");
 		assertEquals("Should have had stringed together correctly",
