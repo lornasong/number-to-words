@@ -102,7 +102,7 @@ public class NumberBuilder {
 	 * NumberConverter. Adds NumberConverter to groupArray. Returns array filled
 	 * NumberConverter(group)
 	 */
-	public void addAllGroupsToArrayList() {
+	private void addAllGroupsToArrayList() {
 		for (int i = 1; i < (getCountOfGroups() + 1); i++) {
 			int groupNumber = getNthGroup(i);
 			addGroupToArrayList(groupNumber);
@@ -114,7 +114,7 @@ public class NumberBuilder {
 	 * with the index of the NumberConverters in groupArray.
 	 * E.G. index 4 of numbers in groupArray are numbers in the trillions.
 	 */
-	public void fillWordMap(Map<Integer, String> wordMap) {
+	private void fillWordMap(Map<Integer, String> wordMap) {
 		wordMap.put(0, "");
 		wordMap.put(1, " thousand");
 		wordMap.put(2, " million");

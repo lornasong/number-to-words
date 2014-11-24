@@ -38,7 +38,7 @@ public class NumberConverter {
 	 * N = 1 for digit in ones place value.
 	 * This method is called for finding the string of the 1st and 3rd digit.
 	 */
-	public String getOneNumberToString(int placeValue) {
+	private String getOneNumberToString(int placeValue) {
 		int digit = getNthDigit(placeValue);
 
 		switch (digit) {
