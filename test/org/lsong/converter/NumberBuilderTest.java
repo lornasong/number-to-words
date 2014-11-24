@@ -85,23 +85,37 @@ public class NumberBuilderTest {
 		NumberBuilder test1 = new NumberBuilder(19);
 		NumberBuilder test2 = new NumberBuilder(123456);
 		NumberBuilder test3 = new NumberBuilder(7623919111L);
-		assertEquals(test1.toString(), "nineteen");
+		assertEquals(test1.toString(), "Nineteen");
 		assertEquals(test2.toString(),
-				"one hundred and twenty three thousand four hundred and fifty six");
+				"One hundred and twenty three thousand four hundred and fifty six");
 		assertEquals(
 				test3.toString(),
-				"seven billion six hundred and twenty three million nine hundred and nineteen thousand one hundred and eleven");
+				"Seven billion six hundred and twenty three million nine hundred and nineteen thousand one hundred and eleven");
 
 	}
-	
+
 	@Test
-	public void testToStringWithZeroes(){
+	public void testToStringWithZeroes() {
 		NumberBuilder test1 = new NumberBuilder(1000);
 		NumberBuilder test2 = new NumberBuilder(2000300000);
 		NumberBuilder test3 = new NumberBuilder(50000000);
-		
-		assertEquals(test1.toString(), "one thousand");
-		assertEquals(test2.toString(), "two billion three hundred thousand");
-		assertEquals(test3.toString(), "fifty million");
+
+		assertEquals(test1.toString(), "One thousand");
+		assertEquals(test2.toString(), "Two billion three hundred thousand");
+		assertEquals(test3.toString(), "Fifty million");
+	}
+
+	@Test
+	public void testToSTringNegative() {
+		NumberBuilder test1 = new NumberBuilder(-23);
+		NumberBuilder test2 = new NumberBuilder(-800377611);
+		NumberBuilder test3 = new NumberBuilder(-1234567890123456789L);
+		assertEquals(test1.toString(), "Negative twenty three");
+		assertEquals(
+				test2.toString(),
+				"Negative eight hundred million three hundred and seventy seven thousand six hundred and eleven");
+		assertEquals(
+				test3.toString(),
+				"Negative one quintillion two hundred and thirty four quadrillion five hundred and sixty seven trillion eight hundred and ninety billion one hundred and twenty three million four hundred and fifty six thousand seven hundred and eighty nine");
 	}
 }

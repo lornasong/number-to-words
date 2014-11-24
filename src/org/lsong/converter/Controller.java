@@ -4,6 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Calls NumberBuilder to convert user's long number into a string.
+ * 
+ * @author lsong
+ */
 public class Controller {
 
 	public static void main(String[] args) {
@@ -18,12 +23,18 @@ public class Controller {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(
 				System.in));
 
+		System.out
+				.println("Please enter a number with a maximum of 19 digits:");
 		long input = getLong(reader);
 		NumberBuilder test = new NumberBuilder(input);
 		System.out.println(test.toString());
 
 	}
 
+	/**
+	 * Reads and returns user's long. Recursively calls itself if user input is
+	 * incorrect.
+	 */
 	private long getLong(BufferedReader reader) {
 		try {
 			return Long.parseLong(reader.readLine());
