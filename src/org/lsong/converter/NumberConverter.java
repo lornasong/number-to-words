@@ -13,8 +13,10 @@ public class NumberConverter {
 	private final int groupNumber;
 	private final int groupCount;
 
-	// TODO Need to specify that int can be maximum of three digits long
 	public NumberConverter(int group) {
+		if (String.valueOf(group).length() > 3){
+			throw new IllegalArgumentException("Number must be under three digits");
+		}
 		this.groupNumber = group;
 		groupCount = counter++;
 	}
