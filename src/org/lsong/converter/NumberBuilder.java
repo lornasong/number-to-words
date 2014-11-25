@@ -148,8 +148,13 @@ public class NumberBuilder {
 		}
 		
 		numberStr = numberStr.trim();
-		numberStr = numberStr.substring(0, 1).toUpperCase() + numberStr.substring(1);
+		if (numberStr.isEmpty()){
+			return "Zero";
+		}
+		else{
+			numberStr = numberStr.substring(0, 1).toUpperCase() + numberStr.substring(1);
+		}
 		return numberStr;
-	}
+}
 
 }

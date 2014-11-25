@@ -28,6 +28,7 @@ public class Controller {
 		long input = getLong(reader);
 		NumberBuilder test = new NumberBuilder(input);
 		System.out.println(test.toString());
+		System.out.println("Thank you.");
 
 	}
 
@@ -39,7 +40,6 @@ public class Controller {
 		try {
 			return Long.parseLong(reader.readLine());
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
 			System.out.println("Error: incorrect input");
 			System.out
 					.println("Please re-enter a number with the maximum of 19 digits:");
