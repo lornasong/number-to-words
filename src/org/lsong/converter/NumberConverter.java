@@ -19,10 +19,6 @@ public class NumberConverter {
 		this.groupNumber = group;
 	}
 
-	public int getGroupNumber() {
-		return groupNumber;
-	}
-
 	/**
 	 * Returns the digit in the position requested (the Nth digit).
 	 * E.G. for 745, the 3rd digit returned is 7, the 2nd digit is 4, so on.

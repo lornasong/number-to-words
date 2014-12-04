@@ -99,10 +99,12 @@ public class NumberBuilderTest {
 		NumberBuilder test1 = new NumberBuilder(1000);
 		NumberBuilder test2 = new NumberBuilder(2000300000);
 		NumberBuilder test3 = new NumberBuilder(50000000);
+		NumberBuilder test4 = new NumberBuilder(0);
 
 		assertEquals(test1.toString(), "One thousand");
 		assertEquals(test2.toString(), "Two billion three hundred thousand");
 		assertEquals(test3.toString(), "Fifty million");
+		assertEquals(test4.toString(), "Zero");
 	}
 
 	@Test
@@ -117,5 +119,14 @@ public class NumberBuilderTest {
 		assertEquals(
 				test3.toString(),
 				"Negative one quintillion two hundred and thirty four quadrillion five hundred and sixty seven trillion eight hundred and ninety billion one hundred and twenty three million four hundred and fifty six thousand seven hundred and eighty nine");
+	}
+	
+	@Test
+	public void testBooleanNegative(){
+		NumberBuilder positive = new NumberBuilder(23);
+		NumberBuilder negative = new NumberBuilder(-23);
+		
+		assertEquals(positive.getNegative(), false);
+		assertEquals(negative.getNegative(), true);
 	}
 }

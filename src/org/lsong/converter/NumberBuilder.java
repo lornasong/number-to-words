@@ -36,10 +36,6 @@ public class NumberBuilder {
 		fillWordMap(wordMap);
 	}
 
-	public long getLongNumber() {
-		return longNumber;
-	}
-
 	public List<NumberConverter> getGroupArray() {
 		return groupArray;
 	}

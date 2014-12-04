@@ -239,7 +239,8 @@ public class NumberConverterTest {
 		NumberConverter testHT = new NumberConverter(2);
 		NumberConverter testHO = new NumberConverter(40);
 		NumberConverter testTO = new NumberConverter(900);
-		NumberConverter testHTO = new NumberConverter(013);
+		NumberConverter testH2 = new NumberConverter(13);
+		NumberConverter testHTO = new NumberConverter(0);
 		assertEquals("Should have had stringed together correctly",
 				test.toString(), "four hundred and thirty six");
 		assertEquals("Should have had stringed together correctly",
@@ -255,7 +256,17 @@ public class NumberConverterTest {
 		assertEquals("Should have had stringed together correctly",
 				testTO.toString(), "nine hundred");
 		assertEquals("Should have had stringed together correctly",
+				testH2.toString(), "thirteen");
+		assertEquals("Should have had stringed together correctly",
 				testHTO.toString(), "");
 
+	}
+	
+	/**
+	 * Test Illegal Argument (more than 3 digits contructor)
+	 */
+	@Test (expected = IllegalArgumentException.class)
+	public void testIllegalArgument(){
+		NumberConverter illegal = new NumberConverter(1242);
 	}
 }
