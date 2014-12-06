@@ -11,13 +11,33 @@ import org.junit.Test;
  * @author lornasong
  */
 public class NumberConverterTest {
-		
+
+	private NumberString[] numberStrings = new NumberString[] {
+			new NumberString(295, "two hundred and ninety five"),
+			new NumberString(109, "one hundred and nine"),
+			new NumberString(0, ""),
+			new NumberString(1, "one"),
+			new NumberString(11, "eleven"),
+			new NumberString(31, "thirty one"),
+			new NumberString(34, "thirty four"),
+			new NumberString(999, "nine hundred and ninety nine"),
+			new NumberString(993, "nine hundred and ninety three"),
+			
+	// end
+	};
+
+	@Test
+	public void testNumberStrings() {
+		for (NumberString numberString : numberStrings) {
+			testNumberString(numberString);
+		}
+	}
+
 	/**
 	 * Next Three Test: retrieves number at place values ones, tens, hundreds
 	 * Each method tests (at least) a regular number, a number that has 0 in the
 	 * place value, a number that ends between 11-19.
 	 */
-	@Test
 	public void testGetOnesDigit() {
 		NumberConverter test5 = new NumberConverter(295);
 		NumberConverter test9 = new NumberConverter(109);
@@ -33,20 +53,18 @@ public class NumberConverterTest {
 				2);
 	}
 
-	@Test
 	public void testGetTensDigit() {
-		NumberConverter test2 = new NumberConverter(295);
+		NumberConverter test5 = new NumberConverter(295);
 		NumberConverter test0 = new NumberConverter(109);
 		NumberConverter test13 = new NumberConverter(313);
 		assertEquals("Should have returned second to last digit",
-				test2.getNthDigit(2), 9);
+				test5.getNthDigit(2), 9);
 		assertEquals("Should have returned second to last digit",
 				test0.getNthDigit(2), 0);
 		assertEquals("Should have returned second to last digit",
 				test13.getNthDigit(2), 1);
 	}
 
-	@Test
 	public void testGetHundredsDigit() {
 		NumberConverter test5 = new NumberConverter(593);
 		NumberConverter test0 = new NumberConverter(21);
@@ -62,7 +80,6 @@ public class NumberConverterTest {
 	/**
 	 * Tests a case of retrieving digits from the number 0
 	 */
-	@Test
 	public void testGetDigitsNumberIsZero() {
 		NumberConverter test = new NumberConverter(0);
 		assertEquals("Should have returned ones digit as 0",
@@ -79,7 +96,6 @@ public class NumberConverterTest {
 	 * 313 - tens digit is one. Ones place string should not be "three", it
 	 * should be "". This is because tens place string will be "thirteen"
 	 */
-	@Test
 	public void testsetOnesString() {
 		NumberConverter zero = new NumberConverter(120);
 		NumberConverter one = new NumberConverter(31);
@@ -119,7 +135,6 @@ public class NumberConverterTest {
 	/**
 	 * Tests for numbers that do not have a one in the tens place.
 	 */
-	@Test
 	public void testsetTensStringNotOne() {
 		NumberConverter zero = new NumberConverter(503);
 		NumberConverter two = new NumberConverter(521);
@@ -154,7 +169,6 @@ public class NumberConverterTest {
 	 * Tests numbers that have one in tens place value. E.G. Explicitly tests
 	 * 'ten' through 'nineteen'
 	 */
-	@Test
 	public void testSetTensStringOne() {
 		NumberConverter zero = new NumberConverter(810);
 		NumberConverter one = new NumberConverter(211);
@@ -191,7 +205,6 @@ public class NumberConverterTest {
 	/**
 	 * Tests hundreds string.
 	 */
-	@Test
 	public void testSetHundredsString() {
 		NumberConverter zero = new NumberConverter(12);
 		NumberConverter one = new NumberConverter(182);
@@ -230,7 +243,6 @@ public class NumberConverterTest {
 	 * Tests the string for all three digits combined. Tests all possible
 	 * combinations of place values with zero.
 	 */
-	@Test
 	public void testToString() {
 		NumberConverter test = new NumberConverter(436);
 		NumberConverter testH = new NumberConverter(95);
@@ -261,12 +273,28 @@ public class NumberConverterTest {
 				testHTO.toString(), "");
 
 	}
-	
+
 	/**
 	 * Test Illegal Argument (more than 3 digits contructor)
 	 */
-	@Test (expected = IllegalArgumentException.class)
-	public void testIllegalArgument(){
-		NumberConverter illegal = new NumberConverter(1242);
+	@Test(expected = IllegalArgumentException.class)
+	public void testIllegalArgument() {
+		new NumberConverter(1242);
+	}
+
+	private void testNumberString(NumberString numberString) {
+		NumberConverter converter = new NumberConverter(numberString.number);
+		assertEquals(numberString.word, converter.toString());
+	}
+
+	// put private classes at bottom
+	private static class NumberString {
+		int number;
+		String word;
+
+		public NumberString(int number, String word) {
+			this.number = number;
+			this.word = word;
+		}
 	}
 }

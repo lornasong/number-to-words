@@ -20,12 +20,12 @@ public class NumberBuilder {
 	// Stores NumberConverter
 	private final List<NumberConverter> groupArray = new ArrayList<NumberConverter>();
 	// Stores large number words e.g. "trillion"
-	private Map<Integer, String> wordMap = new HashMap<Integer, String>();
-	private boolean negative;
+	private final Map<Integer, String> wordMap = new HashMap<Integer, String>();//note: reference not changing
+	private final boolean negative;//because set instructor
 
-	
+	//write a method that is static that getEnglish(). Can always access this method without the instance of the class
 	public NumberBuilder(long longNumber) {
-		if (longNumber < 0 ){
+		if (longNumber < 0 ){// alt. (this.negative == true)
 			this.negative = true;
 		}
 		else{
@@ -35,12 +35,8 @@ public class NumberBuilder {
 		addAllGroupsToArrayList();
 		fillWordMap(wordMap);
 	}
-
-	public List<NumberConverter> getGroupArray() {
-		return groupArray;
-	}
 	
-	public boolean getNegative(){
+	public boolean isNegative(){//booleans don't use get() usually
 		return negative;
 	}
 
@@ -48,7 +44,7 @@ public class NumberBuilder {
 	 * Returns how many digits are the user's long
 	 */
 	public int getLengthOfLong() {
-		return String.valueOf(longNumber).length();
+		return String.valueOf(longNumber).length();//conversions are expensive comparatively
 	}
 
 	/**
@@ -59,7 +55,7 @@ public class NumberBuilder {
 		try {
 			NumberConverter group = new NumberConverter(groupNumber);
 			return groupArray.add(group);
-		} catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException e) {//don't need to catch illegal argument exception. runtime excep.
 			e.printStackTrace();
 			return false;
 		}
@@ -69,6 +65,8 @@ public class NumberBuilder {
 	 * Counts how many groups of three can be formed by longNumber.
 	 * E.G. 8208 forms 2 groups [8][208]
 	 */
+	//Note: should be private. make package better than public. shouldn't be public be
+	//smarter about structuring testing
 	public int getCountOfGroups() {
 
 		int length = getLengthOfLong();
@@ -76,7 +74,7 @@ public class NumberBuilder {
 		if (length % 3 == 0) {
 			return (getLengthOfLong() / 3);
 		} else {
-			return ((getLengthOfLong() / 3) + 1);
+			return ((getLengthOfLong() / 3) + 1);//(getLengthOfLong() + (n-1))/3
 		}
 	}
 
@@ -87,7 +85,7 @@ public class NumberBuilder {
 	 * finding the first group. If-Statement accounts for this.
 	 */
 	public int getNthGroup(int n) {
-		if (n == 1) {
+		if (n == 1) {//index start with zero TODO
 			return (int) (longNumber % 1000);
 		}
 		return (int) ((longNumber / Math.pow(1000, n - 1)) % 1000);
@@ -99,7 +97,7 @@ public class NumberBuilder {
 	 * NumberConverter(group)
 	 */
 	private void addAllGroupsToArrayList() {
-		for (int i = 1; i < (getCountOfGroups() + 1); i++) {
+		for (int i = 1; i < (getCountOfGroups() + 1); i++) {//index start with zero TODO
 			int groupNumber = getNthGroup(i);
 			addGroupToArrayList(groupNumber);
 		}
@@ -132,15 +130,17 @@ public class NumberBuilder {
 		String numberStr = "";
 
 		for (int i = 0; i < (getCountOfGroups()); i++) {
-			if (groupArray.get(i).toString().equals("")) {
-			} else {
+			//if (groupArray.get(i).toString().equals("")) {
+			if (! groupArray.get(i).toString().isEmpty()){//only do if pass if trying to call out something special
 				numberStr = " " + (groupArray.get(i) + wordMap.get(i))
 						+ numberStr;
 			}
 		}
+		//Can try to concatenate backwards. Or use append using String Builder TODO
+		//Use the '+' if you only use it once. Don't use in for loops
 
 		if (negative == true){
-			numberStr = "negative" + numberStr;
+			numberStr = "negative" + numberStr;//Move to top. Start with Negative if applicable TODO
 		}
 		
 		numberStr = numberStr.trim();
