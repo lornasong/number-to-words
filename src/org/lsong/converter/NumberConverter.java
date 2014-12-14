@@ -155,6 +155,16 @@ public class NumberConverter {
 	@Override
 	public String toString() {
 
+		//next time set a variable as hundreds, tens, ones. don't call method everytime.
+		//use string builder next time TODO
+		//And no .equals. do isempty()
+		
+		// sep = "";
+		// add the hundreds
+		// if length > 0 sep = " and "
+		// if tens length > 0 append sep, append tens, sep = " "
+		// if ones length > 0 append sep, append ons
+		
 		if (setHundredsString().equals("")) {
 			if (setTensString().equals("")) {
 				if (setOnesString().equals("")) {
@@ -165,8 +175,9 @@ public class NumberConverter {
 			} else {
 				if (setOnesString().equals("")) {
 					return setTensString();//H, Os are empty
+				} else {
+					return setTensString() + " " + setOnesString();
 				}
-				return setTensString() + " " + setOnesString();
 			}
 		} else {
 			if (setTensString().equals("")) {
@@ -175,6 +186,7 @@ public class NumberConverter {
 				}
 				return setHundredsString() + " and " + setOnesString();//Ts are empty
 			} else {
+				// tens has stuff here
 			}
 			if (setOnesString().equals("")) {
 				return setHundredsString() + " and " + setTensString();//Os are empty
